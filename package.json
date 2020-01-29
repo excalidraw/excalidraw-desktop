@@ -1,15 +1,14 @@
 {
-  "name": "excalidraw-desktop",
-  "version": "1.0.0",
   "description": "Excalidraw Desktop",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "start": "yarn build && electron ./dist/main.js"
-  },
-  "author": "Excalidraw",
   "devDependencies": {
     "electron": "7.1.10",
     "typescript": "3.7.5"
-  }
+  },
+  "name": "excalidraw-desktop",
+  "scripts": {
+    "build": "tsc",
+    "start": "yarn build && electron ./dist/main.js",
+    "watch": "tsc -w"
+  },
+  "version": "0.0.1"
 }
