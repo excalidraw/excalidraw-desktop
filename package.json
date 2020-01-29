@@ -1,13 +1,41 @@
 {
   "description": "Excalidraw Desktop",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.18.0",
+    "@typescript-eslint/parser": "2.18.0",
     "electron": "7.1.10",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "husky": "4.2.1",
+    "lint-staged": "10.0.4",
+    "prettier": "1.19.1",
     "typescript": "3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,md,yml}": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "name": "excalidraw-desktop",
   "scripts": {
     "build": "tsc",
+    "fix": "yarn fix:other && yarn fix:code",
+    "fix:code": "yarn test:code --fix",
+    "fix:other": "yarn prettier --write",
+    "prettier": "prettier \"**/*.{json,md,yml}\"",
     "start": "yarn build && electron ./dist/main.js",
+    "test": "yarn test:other && yarn test:code",
+    "test:code": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
+    "test:other": "yarn prettier --list-different",
     "watch": "tsc -w"
   },
   "version": "0.0.1"
