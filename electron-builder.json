@@ -1,0 +1,29 @@
+{
+  "appId": "com.excalidraw.Excalidraw",
+  "productName": "Excalidraw Desktop",
+  "directories": {
+    "output": "dist"
+  },
+  "files": ["package.json", "./dist/main.js"],
+  "win": {
+    "target": [
+      {
+        "target": "zip",
+        "arch": ["x64", "ia32"]
+      }
+    ]
+  },
+  "linux": {
+    "category": "Development",
+    "target": [
+      {
+        "target": "tar.gz",
+        "arch": ["x64", "ia32"]
+      }
+    ]
+  },
+  "mac": {
+    "hardenedRuntime": true,
+    "target": "dmg"
+  }
+}
