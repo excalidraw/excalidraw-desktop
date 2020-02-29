@@ -8,7 +8,7 @@
     "package.json",
     "./dist/main.js",
     "build/icon.*",
-    "excalidraw-*.asar"
+    "excalidraw.asar"
   ],
   "win": {
     "target": [
