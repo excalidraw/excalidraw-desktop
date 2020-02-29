@@ -4,11 +4,11 @@ const https = require("https");
 const fs = require("fs");
 
 const DEST = "excalidraw.asar";
-const URL = "https://excalidraw.com/excalidraw.asar";
+const SOURCE = "https://excalidraw.com/excalidraw.asar";
 
 const file = fs.createWriteStream(DEST);
 const request = https
-  .get(URL, response => {
+  .get(SOURCE, response => {
     response.pipe(file);
     file.on("finish", () => {
       console.info(`${DEST} is downloaded`);
