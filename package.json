@@ -26,7 +26,7 @@
     "*.{json,md,yml}": [
       "prettier --write"
     ],
-    "*.{ts,tsx}": [
+    "*.{js,ts,tsx}": [
       "eslint --fix"
     ]
   },
@@ -41,7 +41,7 @@
     "prettier": "prettier \"**/*.{json,md,yml}\"",
     "start": "yarn build:app && electron ./dist/main.js",
     "test": "yarn test:other && yarn test:code",
-    "test:code": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
+    "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test:other": "yarn prettier --list-different",
     "watch": "tsc -w"
   },
