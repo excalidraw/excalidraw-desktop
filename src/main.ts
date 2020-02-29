@@ -1,5 +1,7 @@
 import {app, BrowserWindow} from "electron";
 
+const EXCALIDRAW_BUNDLE = `file://${__dirname}/../excalidraw-2020-02-29-10-52-11.asar/index.html`;
+
 let mainWindow: Electron.BrowserWindow;
 
 function createWindow() {
@@ -8,7 +10,7 @@ function createWindow() {
     width: 800,
   });
 
-  mainWindow.loadURL("https://excalidraw.com");
+  mainWindow.loadURL(EXCALIDRAW_BUNDLE);
 
   mainWindow.on("closed", () => {
     mainWindow = null;
