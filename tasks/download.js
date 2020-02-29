@@ -3,11 +3,17 @@
 const https = require("https");
 const fs = require("fs");
 
-const file = fs.createWriteStream("excalidraw.asar");
-const request = https.get(
-  "https://excalidraw.com/excalidraw.asar",
-  response => {
+const dest = "excalidraw.asar";
+const file = fs.createWriteStream(dest);
+const request = https
+  .get("https://excalidraw.com/excalidraw.asar", response => {
     response.pipe(file);
-    console.info("excalidraw.asar is downloaded");
-  },
-);
+    file.on("finish", () => {
+      console.info("excalidraw.asar is downloaded");
+      file.close();
+    });
+  })
+  .on("error", error => {
+    fs.unlink(dest, () => {});
+    console.error(error);
+  });
