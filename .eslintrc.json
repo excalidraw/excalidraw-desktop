@@ -17,5 +17,5 @@
     "no-else-return": "error",
     "prettier/prettier": "error"
   },
-  "ignorePatterns": ["tasks"]
+  "ignorePatterns": ["dist"]
 }
