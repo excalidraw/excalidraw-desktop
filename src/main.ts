@@ -1,6 +1,6 @@
 import {app, BrowserWindow} from "electron";
 
-const EXCALIDRAW_BUNDLE = `file://${__dirname}/../excalidraw-2020-02-29-10-52-11.asar/index.html`;
+const EXCALIDRAW_BUNDLE = `file://${__dirname}/../excalidraw.asar/index.html`;
 
 let mainWindow: Electron.BrowserWindow;
 
