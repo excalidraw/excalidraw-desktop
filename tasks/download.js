@@ -3,7 +3,7 @@
 const https = require("https");
 const fs = require("fs");
 
-const DEST = "excalidraw.asar";
+const DEST = "dist/excalidraw.asar";
 const SOURCE = "https://excalidraw.com/excalidraw.asar";
 
 const file = fs.createWriteStream(DEST);

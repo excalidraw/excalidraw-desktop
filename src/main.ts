@@ -1,6 +1,10 @@
 import {app, BrowserWindow} from "electron";
 
-const EXCALIDRAW_BUNDLE = `file://${__dirname}/../excalidraw.asar/index.html`;
+const path = require("path");
+
+const url = require("url");
+
+const EXCALIDRAW_BUNDLE = path.join(__dirname, "excalidraw.asar", "index.html");
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -10,7 +14,13 @@ function createWindow() {
     width: 800,
   });
 
-  mainWindow.loadURL(EXCALIDRAW_BUNDLE);
+  mainWindow.loadURL(
+    url.format({
+      pathname: EXCALIDRAW_BUNDLE,
+      protocol: "file",
+      slashes: true,
+    }),
+  );
 
   mainWindow.on("closed", () => {
     mainWindow = null;

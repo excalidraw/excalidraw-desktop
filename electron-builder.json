@@ -6,9 +6,9 @@
   },
   "files": [
     "package.json",
-    "./dist/main.js",
+    "dist/main.js",
     "build/icon.*",
-    "excalidraw.asar"
+    "dist/excalidraw.asar"
   ],
   "win": {
     "target": [
