@@ -1,5 +1,11 @@
 import {app, BrowserWindow} from "electron";
 
+const path = require("path");
+
+const url = require("url");
+
+const EXCALIDRAW_BUNDLE = path.join(__dirname, "client", "index.html");
+
 let mainWindow: Electron.BrowserWindow;
 
 function createWindow() {
@@ -8,7 +14,13 @@ function createWindow() {
     width: 800,
   });
 
-  mainWindow.loadURL("https://excalidraw.com");
+  mainWindow.loadURL(
+    url.format({
+      pathname: EXCALIDRAW_BUNDLE,
+      protocol: "file",
+      slashes: true,
+    }),
+  );
 
   mainWindow.on("closed", () => {
     mainWindow = null;

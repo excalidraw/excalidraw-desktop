@@ -1,10 +1,10 @@
 {
   "appId": "com.excalidraw.Excalidraw",
-  "productName": "Excalidraw Desktop",
+  "productName": "Excalidraw",
   "directories": {
     "output": "dist"
   },
-  "files": ["package.json", "./dist/main.js", "build/icon.*"],
+  "files": ["package.json", "dist/client", "dist/main.js", "build/icon.*"],
   "win": {
     "target": [
       {
