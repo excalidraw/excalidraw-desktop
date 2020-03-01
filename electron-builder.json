@@ -4,12 +4,7 @@
   "directories": {
     "output": "dist"
   },
-  "files": [
-    "package.json",
-    "dist/main.js",
-    "build/icon.*",
-    "dist/excalidraw.asar"
-  ],
+  "files": ["package.json", "dist/client", "dist/main.js", "build/icon.*"],
   "win": {
     "target": [
       {

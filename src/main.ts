@@ -4,7 +4,7 @@ const path = require("path");
 
 const url = require("url");
 
-const EXCALIDRAW_BUNDLE = path.join(__dirname, "excalidraw.asar", "index.html");
+const EXCALIDRAW_BUNDLE = path.join(__dirname, "client", "index.html");
 
 let mainWindow: Electron.BrowserWindow;
 
