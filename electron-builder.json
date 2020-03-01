@@ -25,5 +25,14 @@
   "mac": {
     "hardenedRuntime": true,
     "target": "dmg"
-  }
+  },
+  "fileAssociations": [
+    {
+      "ext": "excalidraw",
+      "name": "Excalidraw",
+      "description": "Excalidraw file",
+      "role": "Editor",
+      "mimeType": "application/json"
+    }
+  ]
 }
