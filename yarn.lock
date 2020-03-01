@@ -348,7 +348,7 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-asar@^2.1.0:
+asar@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/asar/-/asar-2.1.0.tgz#97c6a570408c4e38a18d4a3fb748a621b5a7844e"
   integrity sha512-d2Ovma+bfqNpvBzY/KU8oPY67ZworixTpkjSx0PCXnQi67c2cXmssaTxpFDUM0ttopXoGx/KRxNg/GDThYbXQA==
