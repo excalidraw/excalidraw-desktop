@@ -1,6 +1,6 @@
 {
   "appId": "com.excalidraw.Excalidraw",
-  "productName": "Excalidraw Desktop",
+  "productName": "Excalidraw",
   "directories": {
     "output": "dist"
   },
