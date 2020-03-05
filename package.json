@@ -42,6 +42,7 @@
     "fix:code": "yarn test:code --fix",
     "fix:other": "yarn prettier --write",
     "prettier": "prettier \"**/*.{json,md,yml}\"",
+    "preinstall": "npx mkdirp dist",
     "postinstall": "yarn download",
     "start": "yarn build:app && electron ./dist/main.js",
     "test": "yarn test:other && yarn test:code",
