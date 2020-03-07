@@ -14,3 +14,4 @@ jobs:
       - run: |
           yarn
           yarn build
+          yarn test
