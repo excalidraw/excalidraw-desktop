@@ -1,5 +1,7 @@
 import {app, BrowserWindow} from "electron";
 
+import checkVersion from "./util/checkVersion";
+
 const path = require("path");
 
 const url = require("url");
@@ -24,6 +26,13 @@ function createWindow() {
 
   mainWindow.on("closed", () => {
     mainWindow = null;
+  });
+
+  mainWindow.on("show", async () => {
+    const {local: localVersion, needsUpdate} = await checkVersion();
+
+    console.log("Current version: ", localVersion);
+    console.log("Needs update: ", needsUpdate);
   });
 }
 
