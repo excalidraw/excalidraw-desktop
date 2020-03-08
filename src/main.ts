@@ -31,8 +31,8 @@ function createWindow() {
   mainWindow.on("show", async () => {
     const {local: localVersion, needsUpdate} = await checkVersion();
 
-    console.log("Current version: ", localVersion);
-    console.log("Needs update: ", needsUpdate);
+    console.info("Current version", localVersion);
+    console.info("Needs update", needsUpdate);
   });
 }
 
