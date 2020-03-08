@@ -55,7 +55,6 @@
   },
   "version": "0.0.1",
   "dependencies": {
-    "date-and-time": "^0.12.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "2.6.0"
   }
 }
