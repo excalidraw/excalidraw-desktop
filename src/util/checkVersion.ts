@@ -4,9 +4,9 @@ const fs = require("fs");
 
 const path = require("path");
 
-const fetch = require("node-fetch");
+const fetch = require("node-fetch").default;
 
-const LOCAL_VERSION_PATH = path.join(__dirname, "..", "client", "version.json");
+const LOCAL_VERSION_PATH = path.resolve(__dirname, "client", "version.json");
 
 const DATE_FORMAT = "YYYY-MM-DD-hh-mm-ss";
 

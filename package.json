@@ -16,9 +16,12 @@
     "lint-staged": "10.0.8",
     "mri": "1.1.4",
     "prettier": "1.19.1",
-    "typescript": "3.8.3"
+    "ts-loader": "^6.2.1",
+    "typescript": "3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
   },
-  "main": "dist/main.js",
+  "main": "dist/main.bundle.js",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -35,7 +38,7 @@
   "name": "excalidraw-desktop",
   "scripts": {
     "build": "yarn download && yarn build:app && yarn build:dist",
-    "build:app": "tsc",
+    "build:app": "webpack",
     "build:dist": "node ./tasks/dist.js",
     "download": "node ./tasks/download.js",
     "fix": "yarn fix:other && yarn fix:code",
@@ -44,11 +47,11 @@
     "prettier": "prettier \"**/*.{json,md,yml}\"",
     "preinstall": "npx mkdirp dist",
     "postinstall": "yarn download",
-    "start": "yarn build:app && electron ./dist/main.js",
+    "start": "yarn build:app && electron ./dist/main.bundle.js",
     "test": "yarn test:other && yarn test:code",
     "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test:other": "yarn prettier --list-different",
-    "watch": "tsc -w"
+    "watch": "webpack -w"
   },
   "version": "0.0.1",
   "dependencies": {

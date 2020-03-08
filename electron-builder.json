@@ -6,9 +6,8 @@
   },
   "files": [
     "package.json",
+    "dist/main.bundle.js",
     "dist/client",
-    "dist/main.js",
-    "dist/util",
     "build/icon.*"
   ],
   "win": {
