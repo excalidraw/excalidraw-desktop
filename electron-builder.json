@@ -4,7 +4,12 @@
   "directories": {
     "output": "dist"
   },
-  "files": ["package.json", "dist/client", "dist/main.js", "build/icon.*"],
+  "files": [
+    "package.json",
+    "dist/main.bundle.js",
+    "dist/client",
+    "build/icon.*"
+  ],
   "win": {
     "target": [
       {
