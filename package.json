@@ -4,7 +4,7 @@
   "devDependencies": {
     "@types/node": "13",
     "@typescript-eslint/eslint-plugin": "2.25.0",
-    "@typescript-eslint/parser": "2.24.0",
+    "@typescript-eslint/parser": "2.25.0",
     "asar": "3.0.2",
     "electron": "8.1.1",
     "electron-builder": "22.4.1",
