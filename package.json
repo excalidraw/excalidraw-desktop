@@ -15,11 +15,11 @@
     "husky": "4.2.3",
     "lint-staged": "10.0.9",
     "mri": "1.1.5",
-    "prettier": "1.19.1",
-    "ts-loader": "^6.2.2",
+    "prettier": "2.0.2",
+    "ts-loader": "6.2.2",
     "typescript": "3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack": "4.42.1",
+    "webpack-cli": "3.3.11"
   },
   "main": "dist/main.bundle.js",
   "husky": {
@@ -50,7 +50,7 @@
     "start": "yarn build:app && electron ./dist/main.bundle.js",
     "test": "yarn test:other && yarn test:code",
     "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
-    "test:other": "yarn prettier --list-different",
+    "test:other": "yarn prettier --ignore-path .gitignore --list-different",
     "watch": "webpack -w"
   },
   "version": "0.0.1",

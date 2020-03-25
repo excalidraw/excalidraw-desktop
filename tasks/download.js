@@ -10,7 +10,7 @@ const UNPACK = "dist/client";
 
 const file = fs.createWriteStream(DEST);
 const request = https
-  .get(SOURCE, response => {
+  .get(SOURCE, (response) => {
     response.pipe(file);
     file.on("finish", async () => {
       console.info(`${DEST} is downloaded`);
@@ -21,7 +21,7 @@ const request = https
       file.close();
     });
   })
-  .on("error", error => {
+  .on("error", (error) => {
     fs.unlink(DEST, () => {});
     console.error(error);
   });

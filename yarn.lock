@@ -3620,10 +3620,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@1.19.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
-  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+prettier@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.2.tgz#1ba8f3eb92231e769b7fcd7cb73ae1b6b74ade08"
+  integrity sha512-5xJQIPT8BraI7ZnaDwSbu5zLrB6vvi8hVV58yHQ+QK64qrY40dULy0HSRlQ2/2IdzeBpjhDkqdcFBnFeDEMVdg==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -4574,7 +4574,7 @@ truncate-utf8-bytes@^1.0.0:
   dependencies:
     utf8-byte-length "^1.0.1"
 
-ts-loader@^6.2.2:
+ts-loader@6.2.2:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-6.2.2.tgz#dffa3879b01a1a1e0a4b85e2b8421dc0dfff1c58"
   integrity sha512-HDo5kXZCBml3EUPcc7RlZOV/JGlLHwppTLEHb3SHnr5V7NXD4klMEkrhJe5wgRbaWsSXi+Y1SIBN/K9B6zWGWQ==
@@ -4792,7 +4792,7 @@ watchpack@^1.6.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
-webpack-cli@^3.3.11:
+webpack-cli@3.3.11:
   version "3.3.11"
   resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.3.11.tgz#3bf21889bf597b5d82c38f215135a411edfdc631"
   integrity sha512-dXlfuml7xvAFwYUPsrtQAA9e4DOe58gnzSxhgrO/ZM/gyXTBowrsYeubyN4mqGhYdpXMFNyQ6emjJS9M7OBd4g==
@@ -4817,7 +4817,7 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.42.1:
+webpack@4.42.1:
   version "4.42.1"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.42.1.tgz#ae707baf091f5ca3ef9c38b884287cfe8f1983ef"
   integrity sha512-SGfYMigqEfdGchGhFFJ9KyRpQKnipvEvjc1TwrXEPCM6H5Wywu10ka8o3KGrMzSMxMQKt8aCHUFh5DaQ9UmyRg==
