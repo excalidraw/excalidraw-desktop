@@ -50,7 +50,7 @@
     "start": "yarn build:app && electron ./dist/main.bundle.js",
     "test": "yarn test:other && yarn test:code",
     "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
-    "test:other": "yarn prettier --list-different",
+    "test:other": "yarn prettier --ignore-path .gitignore --list-different",
     "watch": "webpack -w"
   },
   "version": "0.0.1",
