@@ -2,6 +2,7 @@
   "author": "Excalidraw Team",
   "description": "Excalidraw Desktop",
   "devDependencies": {
+    "@types/minimist": "1.2.0",
     "@types/node": "13",
     "@typescript-eslint/eslint-plugin": "2.25.0",
     "@typescript-eslint/parser": "2.25.0",
@@ -14,27 +15,29 @@
     "execa": "4.0.0",
     "husky": "4.2.3",
     "lint-staged": "10.0.10",
+    "minimist": "1.2.5",
     "mri": "1.1.5",
+    "node-fetch": "2.6.0",
     "prettier": "2.0.2",
     "ts-loader": "6.2.2",
     "typescript": "3.8.3",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11"
   },
-  "main": "dist/main.bundle.js",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{json,md,yml}": [
-      "prettier --write"
-    ],
     "*.{js,ts,tsx}": [
       "eslint --fix"
+    ],
+    "*.{json,md,yml}": [
+      "prettier --write"
     ]
   },
+  "main": "dist/main.bundle.js",
   "name": "excalidraw-desktop",
   "scripts": {
     "build": "yarn download && yarn build:app && yarn build:dist",
@@ -44,17 +47,14 @@
     "fix": "yarn fix:other && yarn fix:code",
     "fix:code": "yarn test:code --fix",
     "fix:other": "yarn prettier --write",
-    "prettier": "prettier \"**/*.{json,md,yml}\"",
-    "preinstall": "npx mkdirp dist",
     "postinstall": "yarn download",
-    "start": "yarn build:app && electron ./dist/main.bundle.js",
+    "preinstall": "npx mkdirp dist",
+    "prettier": "prettier \"**/*.{json,md,yml}\"",
+    "start": "yarn build:app && electron ./dist/main.bundle.js --devtools",
     "test": "yarn test:other && yarn test:code",
     "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test:other": "yarn prettier --ignore-path .gitignore --list-different",
     "watch": "webpack -w"
   },
-  "version": "0.0.1",
-  "dependencies": {
-    "node-fetch": "2.6.0"
-  }
+  "version": "0.0.1"
 }
