@@ -6,7 +6,7 @@
     "@types/node": "13",
     "@typescript-eslint/eslint-plugin": "2.25.0",
     "@typescript-eslint/parser": "2.25.0",
-    "asar": "3.0.2",
+    "asar": "3.0.3",
     "electron": "8.2.0",
     "electron-builder": "22.4.1",
     "eslint": "6.8.0",
