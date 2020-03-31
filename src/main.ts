@@ -1,20 +1,23 @@
 import {app, BrowserWindow} from "electron";
+import * as minimist from "minimist";
 
 import checkVersion from "./util/checkVersion";
 
 const path = require("path");
-
 const url = require("url");
-
 const EXCALIDRAW_BUNDLE = path.join(__dirname, "client", "index.html");
-
 let mainWindow: Electron.BrowserWindow;
+const argv = minimist(process.argv.slice(1));
 
 function createWindow() {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
   });
+
+  if (argv.devtools) {
+    mainWindow.webContents.openDevTools({mode: "detach"});
+  }
 
   mainWindow.loadURL(
     url.format({
