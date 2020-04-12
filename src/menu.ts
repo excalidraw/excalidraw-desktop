@@ -29,6 +29,7 @@ const openAboutWindow = (activeWindow: BrowserWindow) => {
   );
 
   aboutWindow.setMenuBarVisibility(false);
+  aboutWindow.center();
   aboutWindow.on("ready-to-show", () => aboutWindow.show());
   aboutWindow.on("show", () => {
     const aboutContent = {
