@@ -22,7 +22,9 @@
     "ts-loader": "6.2.2",
     "typescript": "3.8.3",
     "webpack": "4.42.1",
-    "webpack-cli": "3.3.11"
+    "webpack-cli": "3.3.11",
+    "spectron": "10.0.1",
+    "mocha": "7.1.0"
   },
   "husky": {
     "hooks": {
@@ -51,7 +53,8 @@
     "preinstall": "npx mkdirp dist",
     "prettier": "prettier \"**/*.{json,md,yml}\"",
     "start": "yarn build:app && electron ./dist/main.bundle.js --devtools",
-    "test": "yarn test:other && yarn test:code",
+    "test": "yarn test:other && yarn test:code && yarn test:unit",
+    "test:unit": "mocha --exit",
     "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test:other": "yarn prettier --ignore-path .gitignore --list-different",
     "watch": "webpack -w"
