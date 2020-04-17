@@ -6,9 +6,8 @@ import {getAppVersions, getAppName, getMetadata} from "./util/metadata";
 
 const ABOUT_PAGE_PATH = path.resolve(__dirname, "pages", "about.html");
 
-const openAboutWindow = (activeWindow: BrowserWindow) => {
+const openAboutWindow = () => {
   let aboutWindow = new BrowserWindow({
-    parent: activeWindow,
     height: 320,
     width: 320,
     modal: true,
@@ -50,7 +49,7 @@ export const setupMenu = (activeWindow: BrowserWindow, options = {}) => {
         {
           label: `About ${APP_NAME}`,
           enabled: true,
-          click: () => openAboutWindow(activeWindow),
+          click: () => openAboutWindow(),
         },
       ],
     },
