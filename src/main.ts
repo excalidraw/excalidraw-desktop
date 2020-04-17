@@ -1,18 +1,26 @@
 import {app, BrowserWindow} from "electron";
 import * as minimist from "minimist";
-
+import * as path from "path";
+import * as url from "url";
+import {setupMenu} from "./menu";
 import checkVersion from "./util/checkVersion";
+import {setMetadata, setAppName} from "./util/metadata";
+import {APP_NAME} from "./constants";
 
-const path = require("path");
-const url = require("url");
-const EXCALIDRAW_BUNDLE = path.join(__dirname, "client", "index.html");
 let mainWindow: Electron.BrowserWindow;
 const argv = minimist(process.argv.slice(1));
+const EXCALIDRAW_BUNDLE = path.join(__dirname, "client", "index.html");
+const APP_ICON_PATH = path.join(__dirname, "client", "logo-180x180.png");
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    show: false,
     height: 600,
     width: 800,
+    webPreferences: {
+      contextIsolation: true, // protect against prototype pollution
+      preload: `${__dirname}/preload.js`,
+    },
   });
 
   if (argv.devtools) {
@@ -31,11 +39,19 @@ function createWindow() {
     mainWindow = null;
   });
 
-  mainWindow.on("show", async () => {
-    const {local: localVersion, needsUpdate} = await checkVersion();
+  // calling.show after this event, ensure there's no visual flash
+  mainWindow.once("ready-to-show", async () => {
+    const versions = await checkVersion();
 
-    console.info("Current version", localVersion);
-    console.info("Needs update", needsUpdate);
+    console.info("Current version", versions.local);
+    console.info("Needs update", versions.needsUpdate);
+
+    setAppName(APP_NAME);
+    setMetadata("versions", versions);
+    setMetadata("appIconPath", APP_ICON_PATH);
+    setupMenu(mainWindow);
+
+    mainWindow.show();
   });
 }
 
