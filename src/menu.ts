@@ -40,10 +40,14 @@ const openAboutWindow = () => {
     aboutWindow.webContents.send("show-about-contents", aboutContent);
   });
 };
+
 export const setupMenu = (activeWindow: BrowserWindow, options = {}) => {
+  const isDarwin = process.platform === "darwin";
   const defaultMenuItems: MenuItem[] = Menu.getApplicationMenu().items;
-  const menuTemplate = [
-    {
+  const menuTemplate = [];
+  if (isDarwin) {
+    defaultMenuItems.shift();
+    menuTemplate.push({
       label: APP_NAME,
       submenu: [
         {
@@ -52,12 +56,24 @@ export const setupMenu = (activeWindow: BrowserWindow, options = {}) => {
           click: () => openAboutWindow(),
         },
       ],
-    },
-  ];
+    });
+    menuTemplate.push(...defaultMenuItems);
+  } else {
+    defaultMenuItems.pop();
+    menuTemplate.push(...defaultMenuItems);
+    menuTemplate.push({
+      label: "Help",
+      submenu: [
+        {
+          label: `About ${APP_NAME}`,
+          enabled: true,
+          click: () => openAboutWindow(),
+        },
+      ],
+    });
+  }
 
   // TODO: Remove default menu items that aren't relevant
   const appMenu = Menu.buildFromTemplate(menuTemplate);
-  defaultMenuItems.forEach((defaultItem) => appMenu.append(defaultItem));
-
   Menu.setApplicationMenu(appMenu);
 };
