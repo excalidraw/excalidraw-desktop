@@ -39,7 +39,8 @@ function createWindow() {
     mainWindow = null;
   });
 
-  mainWindow.on("show", async () => {
+  // calling.show after this event, ensure there's no visual flash
+  mainWindow.once("ready-to-show", async () => {
     const versions = await checkVersion();
 
     console.info("Current version", versions.local);
@@ -49,10 +50,7 @@ function createWindow() {
     setMetadata("versions", versions);
     setMetadata("appIconPath", APP_ICON_PATH);
     setupMenu(mainWindow);
-  });
 
-  // calling.show after this event, ensure there's no visual flash
-  mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   });
 }
