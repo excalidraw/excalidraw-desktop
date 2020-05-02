@@ -8,7 +8,7 @@
     "@typescript-eslint/eslint-plugin": "2.29.0",
     "@typescript-eslint/parser": "2.30.0",
     "asar": "3.0.3",
-    "electron": "8.2.4",
+    "electron": "8.2.5",
     "electron-builder": "22.6.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.11.0",
