@@ -141,12 +141,7 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*":
-  version "13.13.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.5.tgz#96ec3b0afafd64a4ccea9107b75bf8489f0e5765"
-  integrity sha512-3ySmiBYJPqgjiHA7oEaIo2Rzz0HrOZ7yrNO5HWyaE5q0lQ3BppDZ3N53Miz8bw2I7gh1/zir2MGVZBvpb1zq9g==
-
-"@types/node@14":
+"@types/node@*", "@types/node@14":
   version "14.0.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.1.tgz#5d93e0a099cd0acd5ef3d5bde3c086e1f49ff68c"
   integrity sha512-FAYBGwC+W6F9+huFIDtn43cpy7+SzG+atzRiTfdp3inUKL2hXnd4rG8hylJLIh4+hqrQy1P17kvJByE/z825hA==
@@ -1679,10 +1674,10 @@ electron-store@^5.1.1:
     conf "^6.2.1"
     type-fest "^0.7.1"
 
-electron@8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-8.3.0.tgz#c2b565a4c10d6d287d20164bcd5a478468b940a9"
-  integrity sha512-XRjiIJICZCgUr2vKSUI2PTkfP0gPFqCtqJUaTJSfCTuE3nTrxBKOUNeRMuCzEqspKkpFQU3SB3MdbMSHmZARlQ==
+electron@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-9.0.0.tgz#335cd426a8a542ad8d4c96c0c40a8668ab5527b8"
+  integrity sha512-JsaSQNPh+XDYkLj8APtVKTtvpb86KIG57W5OOss4TNrn8L3isC9LsCITwfnVmGIXHhvX6oY/weCtN5hAAytjVg==
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^12.0.12"
