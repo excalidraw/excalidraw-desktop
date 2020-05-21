@@ -1,4 +1,4 @@
-import {app, BrowserWindow} from "electron";
+import {app, BrowserWindow, shell} from "electron";
 import * as minimist from "minimist";
 import * as path from "path";
 import * as url from "url";
@@ -27,6 +27,9 @@ function createWindow() {
     mainWindow.webContents.openDevTools({mode: "detach"});
   }
 
+  mainWindow.webContents.on("will-navigate", openExternalURLs);
+  mainWindow.webContents.on("new-window", openExternalURLs);
+
   mainWindow.loadURL(
     url.format({
       pathname: EXCALIDRAW_BUNDLE,
@@ -53,6 +56,14 @@ function createWindow() {
 
     mainWindow.show();
   });
+}
+
+// Open external links in user's default browser instead of webview
+function openExternalURLs(event: Electron.Event, url: string) {
+  if (url.startsWith("http")) {
+    event.preventDefault();
+    shell.openExternal(url);
+  }
 }
 
 app.on("ready", createWindow);
