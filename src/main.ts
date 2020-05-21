@@ -1,4 +1,4 @@
-import {app, BrowserWindow, shell} from "electron";
+import {app, BrowserWindow, shell, globalShortcut} from "electron";
 import * as minimist from "minimist";
 import * as path from "path";
 import * as url from "url";
@@ -41,6 +41,13 @@ function createWindow() {
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
+
+  // Enable Cmd+Q on mac to quit the application
+  if (process.platform === "darwin") {
+    globalShortcut.register("Command+Q", () => {
+      app.quit();
+    });
+  }
 
   // calling.show after this event, ensure there's no visual flash
   mainWindow.once("ready-to-show", async () => {
