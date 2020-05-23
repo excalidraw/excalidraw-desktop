@@ -4,12 +4,15 @@ const electronPath = require("electron");
 const path = require("path");
 
 describe("Application launch", function () {
-  this.timeout(10000);
+  this.timeout(20000);
 
   beforeEach(function () {
     this.app = new Application({
       path: electronPath,
-      args: [path.join(__dirname, "..")],
+      host: "127.0.0.1",
+      startTimeout: 10000,
+      args: [path.join(__dirname, "..", "dist", "main.bundle.js")],
+      requireName: "unused",
     });
 
     return this.app.start();
