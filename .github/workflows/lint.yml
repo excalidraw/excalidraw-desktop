@@ -39,7 +39,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           version: 12
-      - run: sudo apt-get install xvfb
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -49,5 +48,9 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile
-      - run: xvfb-run --auto-servernum yarn test:unit
+      - run: yarn install --frozen-lockfile --ignore-scripts
+      - run: yarn build:app
+      - run: sudo apt-get install xvfb
+      - run: |
+          export DISPLAY=:99.0
+          xvfb-run --auto-servernum yarn test:unit
