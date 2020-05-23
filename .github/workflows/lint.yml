@@ -1,4 +1,4 @@
-name: Lint
+name: Test
 
 on:
   push:
@@ -7,11 +7,14 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Install and test
-        run: |
-          yarn
-          yarn test
+      - name: Install Deps
+        run: yarn install --frozen-lockfile
+
+      - name: Test
+        uses: GabrielBB/xvfb-action@v1.2
+        with:
+          run: yarn test
