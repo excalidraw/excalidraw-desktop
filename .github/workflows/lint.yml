@@ -35,6 +35,10 @@ jobs:
     steps:
       - run: lsb_release -a
       - run: uname -a
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
       - run: sudo apt-get install xvfb
 
       - name: Cache node modules
