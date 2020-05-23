@@ -1,4 +1,4 @@
-name: Test
+name: Lint
 
 on:
   push:
@@ -7,14 +7,43 @@ on:
   pull_request:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1
-      - name: Install Deps
-        run: yarn install --frozen-lockfile
-
-      - name: Test
-        uses: GabrielBB/xvfb-action@v1.2
+      - uses: actions/setup-node@v1
         with:
-          run: yarn test
+          version: 12
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn test:code
+      - run: yarn test:other
+
+  linux:
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: lsb_release -a
+      - run: uname -a
+      - run: sudo apt-get install xvfb
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile
+      - run: xvfb-run --auto-servernum yarn test:unit
