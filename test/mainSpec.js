@@ -9,6 +9,7 @@ describe("Application launch", function () {
   beforeEach(function () {
     this.app = new Application({
       path: electronPath,
+      chromeDriverArgs: ["no-sandbox", "--disable-dev-shm-usage"],
       host: "127.0.0.1",
       startTimeout: 10000,
       args: [path.join(__dirname, "..", "dist", "main.bundle.js")],
