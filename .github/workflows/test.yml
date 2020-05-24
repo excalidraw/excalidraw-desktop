@@ -67,6 +67,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           version: 12
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile --ignore-scripts
       - run: yarn build:app
       - run: yarn test:spec
