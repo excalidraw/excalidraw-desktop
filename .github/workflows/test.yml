@@ -101,4 +101,6 @@ jobs:
 
       - run: yarn install --frozen-lockfile --ignore-scripts
       - run: yarn build:app
+      - name: Set no_proxy env variable
+        run: echo '::set-env name=NO_PROXY::127.0.0.1,localhost'
       - run: yarn test:spec
