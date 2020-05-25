@@ -15,6 +15,7 @@ describe("Application launch", function () {
       path: electronPath,
       chromeDriverArgs: ["no-sandbox"],
       startTimeout: 10000,
+      waitTimeout: 10000,
       args: [rootDir],
     });
 
