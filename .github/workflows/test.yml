@@ -80,7 +80,7 @@ jobs:
       - run: yarn test:spec
 
   test-windows:
-    needs: lint
+    # needs: lint
     runs-on: windows-latest
     steps:
       - run: systeminfo
