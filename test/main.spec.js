@@ -13,8 +13,7 @@ describe("Application launch", function () {
   beforeEach(function () {
     this.app = new Application({
       path: electronPath,
-      chromeDriverArgs: ["no-sandbox", "--disable-dev-shm-usage"],
-      host: "127.0.0.1",
+      chromeDriverArgs: ["no-sandbox"],
       startTimeout: 10000,
       args: [rootDir],
     });
