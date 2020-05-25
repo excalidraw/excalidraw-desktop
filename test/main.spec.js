@@ -17,6 +17,8 @@ describe("Application launch", function () {
       startTimeout: 10000,
       waitTimeout: 10000,
       args: [rootDir],
+      webdriverLogPath: "./logs",
+      chromeDriverLogPath: "./chromedriver.log",
     });
 
     return this.app.start();
