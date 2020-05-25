@@ -16,7 +16,7 @@ describe("Application launch", function () {
       chromeDriverArgs: ["no-sandbox", "--disable-dev-shm-usage"],
       host: "127.0.0.1",
       startTimeout: 10000,
-      args: [path.join(rootDir, "dist", "main.bundle.js")],
+      args: [rootDir],
     });
 
     return this.app.start();
