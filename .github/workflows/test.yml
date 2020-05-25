@@ -58,26 +58,26 @@ jobs:
   #     # and no physical input devices. It emulates a dumb framebuffer  using
   #     # virtual memory.
 
-  test-macos:
-    # needs: lint
-    runs-on: macos-latest
-    steps:
-      - run: uname -a
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          version: 12
-      - name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
-      - run: yarn build:app
-      - run: export {no_proxy,NO_PROXY}="127.0.0.1,localhost"
-      - run: yarn test:spec
+  # test-macos:
+  #   # needs: lint
+  #   runs-on: macos-latest
+  #   steps:
+  #     - run: uname -a
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         version: 12
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+  #     - run: yarn install --frozen-lockfile
+  #     - run: yarn build:app
+  #     - run: export {no_proxy,NO_PROXY}="127.0.0.1,localhost"
+  #     - run: yarn test:spec
 
   test-windows:
     # needs: lint
@@ -99,6 +99,6 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile --ignore-scripts
       - run: yarn build:app
-      - run: echo '::set-env name=NO_PROXY::127.0.0.1,localhost'
-      - run: echo '::set-env name=no_proxy::127.0.0.1,localhost'
+      - run: set NO_PROXY=127.0.0.1,localhost
+      - run: set no_proxy=127.0.0.1,localhost
       - run: yarn test:spec
