@@ -6,8 +6,8 @@
   },
   "files": [
     "package.json",
-    "dist/main.bundle.js",
-    "dist/renderer.bundle.js",
+    "dist/main.js",
+    "dist/renderer.js",
     "dist/preload.js",
     "dist/pages/*.html",
     "dist/client",
