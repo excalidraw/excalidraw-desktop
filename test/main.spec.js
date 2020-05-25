@@ -13,11 +13,14 @@ describe("Application launch", function () {
   beforeEach(function () {
     this.app = new Application({
       path: electronPath,
-      chromeDriverArgs: ["no-sandbox"],
-      startTimeout: 10000,
-      waitTimeout: 10000,
       args: [rootDir],
-      webdriverLogPath: "./logs",
+      env: {
+        ELECTRON_ENABLE_LOGGING: true,
+        ELECTRON_ENABLE_STACK_DUMPING: true,
+        NODE_ENV: "test",
+      },
+      startTimeout: 10000,
+      waitTimeout: 10e3,
       chromeDriverLogPath: "./chromedriver.log",
     });
 
