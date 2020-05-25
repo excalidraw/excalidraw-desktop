@@ -99,6 +99,6 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile --ignore-scripts
       - run: yarn build:app
-      - run: set NO_PROXY=127.0.0.1,localhost
-      - run: set no_proxy=127.0.0.1,localhost
+      - run: SET NO_PROXY=localhost,127.0.0.1
+      # - run: set no_proxy=127.0.0.1,localhost
       - run: yarn test:spec
