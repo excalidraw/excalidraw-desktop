@@ -7,59 +7,59 @@ on:
   pull_request:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  # lint:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          version: 12
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         version: 12
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
+  #     - run: yarn install --frozen-lockfile
+  #     - run: yarn lint
 
-  test-linux:
-    needs: lint
-    runs-on: ubuntu-latest
+  # test-linux:
+  #   needs: lint
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - run: lsb_release -a
-      - run: uname -a
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          version: 12
+  #   steps:
+  #     - run: lsb_release -a
+  #     - run: uname -a
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         version: 12
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile --ignore-scripts
-      - run: yarn build:app
-      - run: sudo apt-get install xvfb
-      - run: |
-          export DISPLAY=:99.0 
-          xvfb-run --auto-servernum yarn test:spec
-      # NOTE:
-      # Xvfb is an X server that can run on linux machines with no display hardware
-      # and no physical input devices. It emulates a dumb framebuffer  using
-      # virtual memory.
+  #     - run: yarn install --frozen-lockfile --ignore-scripts
+  #     - run: yarn build:app
+  #     - run: sudo apt-get install xvfb
+  #     - run: |
+  #         export DISPLAY=:99.0
+  #         xvfb-run --auto-servernum yarn test:spec
+  #     # NOTE:
+  #     # Xvfb is an X server that can run on linux machines with no display hardware
+  #     # and no physical input devices. It emulates a dumb framebuffer  using
+  #     # virtual memory.
 
   test-macos:
-    needs: lint
+    # needs: lint
     runs-on: macos-latest
     steps:
       - run: uname -a
@@ -74,33 +74,30 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile --ignore-scripts
+      - run: yarn install --frozen-lockfile
       - run: yarn build:app
+      - run: export {no_proxy,NO_PROXY}="127.0.0.1,localhost"
       - run: yarn test:spec
-
-  test-windows:
-    needs: lint
-    runs-on: windows-latest
-
-    steps:
-      - run: systeminfo
-      - run: git config --global core.autocrlf false
-      - run: git config --global core.eol lf
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          version: 12
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
-
-      - run: yarn install --frozen-lockfile --ignore-scripts
-      - run: yarn build:app
-      - name: Set no_proxy env variable
-        run: echo '::set-env name=NO_PROXY::127.0.0.1,localhost'
-      - run: yarn test:spec
+  # test-windows:
+  #   needs: lint
+  #   runs-on: windows-latest
+  #   steps:
+  #     - run: systeminfo
+  #     - run: git config --global core.autocrlf false
+  #     - run: git config --global core.eol lf
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         version: 12
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+  #     - run: yarn install --frozen-lockfile --ignore-scripts
+  #     - run: yarn build:app
+  #     - name: Set no_proxy env variable
+  #       run: echo '::set-env name=NO_PROXY::127.0.0.1,localhost'
+  #     - run: yarn test:spec
