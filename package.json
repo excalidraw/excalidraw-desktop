@@ -40,7 +40,7 @@
       "prettier --write"
     ]
   },
-  "main": "dist/main.bundle.js",
+  "main": "dist/main.js",
   "name": "excalidraw-desktop",
   "scripts": {
     "build": "yarn download && yarn build:app && yarn build:dist",
@@ -53,7 +53,7 @@
     "postinstall": "yarn download",
     "preinstall": "npx mkdirp dist",
     "prettier": "prettier \"**/*.{json,md,yml}\"",
-    "start": "yarn build:app && electron ./dist/main.bundle.js --devtools",
+    "start": "yarn build:app && electron ./dist/main.js --devtools",
     "test": "yarn lint && yarn test:spec",
     "test:spec": "mocha --exit",
     "lint": "yarn lint:code && yarn lint:other",

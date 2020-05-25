@@ -25,7 +25,7 @@ module.exports = [
     entry: "./src/main.ts",
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "main.bundle.js",
+      filename: "main.js",
     },
     node: {
       __dirname: false,
@@ -47,7 +47,7 @@ module.exports = [
     entry: "./src/renderer.ts",
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "renderer.bundle.js",
+      filename: "renderer.js",
     },
 
     plugins: [
