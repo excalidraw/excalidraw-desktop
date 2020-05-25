@@ -8,7 +8,7 @@
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
     "asar": "3.0.3",
-    "electron": "9.0.0",
+    "electron": "8.3.0",
     "electron-builder": "22.6.1",
     "eslint": "7.0.0",
     "eslint-config-prettier": "6.11.0",
@@ -17,15 +17,15 @@
     "husky": "4.2.5",
     "lint-staged": "10.2.4",
     "minimist": "1.2.5",
+    "mocha": "7.2.0",
     "mri": "1.1.5",
     "node-fetch": "2.6.0",
     "prettier": "2.0.5",
+    "spectron": "10.0.1",
     "ts-loader": "7.0.4",
     "typescript": "3.9.3",
     "webpack": "4.43.0",
-    "webpack-cli": "3.3.11",
-    "spectron": "10.0.1",
-    "mocha": "7.1.0"
+    "webpack-cli": "3.3.11"
   },
   "husky": {
     "hooks": {
@@ -40,7 +40,7 @@
       "prettier --write"
     ]
   },
-  "main": "dist/main.bundle.js",
+  "main": "dist/main.js",
   "name": "excalidraw-desktop",
   "scripts": {
     "build": "yarn download && yarn build:app && yarn build:dist",
@@ -48,16 +48,17 @@
     "build:dist": "node ./tasks/dist.js",
     "download": "node ./tasks/download.js",
     "fix": "yarn fix:other && yarn fix:code",
-    "fix:code": "yarn test:code --fix",
+    "fix:code": "yarn lint:code --fix",
     "fix:other": "yarn prettier --write",
     "postinstall": "yarn download",
     "preinstall": "npx mkdirp dist",
     "prettier": "prettier \"**/*.{json,md,yml}\"",
-    "start": "yarn build:app && electron ./dist/main.bundle.js --devtools",
-    "test": "yarn test:other && yarn test:code && yarn test:unit",
-    "test:unit": "mocha --exit",
-    "test:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
-    "test:other": "yarn prettier --ignore-path .gitignore --list-different",
+    "start": "yarn build:app && electron ./dist/main.js --devtools",
+    "test": "yarn lint && yarn test:spec",
+    "test:spec": "mocha --exit",
+    "lint": "yarn lint:code && yarn lint:other",
+    "lint:code": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "lint:other": "yarn prettier --ignore-path .gitignore --list-different",
     "watch": "webpack -w"
   },
   "version": "0.0.1",
