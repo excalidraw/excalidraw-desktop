@@ -13,6 +13,7 @@ describe("Application launch", function () {
   beforeEach(function () {
     this.app = new Application({
       path: electronPath,
+      cwd: process.cwd(),
       args: [rootDir],
       env: {
         ELECTRON_ENABLE_LOGGING: true,
