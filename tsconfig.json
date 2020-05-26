@@ -9,5 +9,5 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["src/**/*", "tasks", "webpack.config.js"]
+  "include": ["src/**/*", "tasks", "test/**/*", "webpack.config.js"]
 }

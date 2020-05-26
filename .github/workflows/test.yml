@@ -1,0 +1,104 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+
+  test-linux:
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: lsb_release -a
+      - run: uname -a
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:app
+      - run: sudo apt-get install xvfb
+      - run: |
+          export DISPLAY=:99.0
+          xvfb-run --auto-servernum yarn test:spec
+      # NOTE:
+      # Xvfb is an X server that can run on linux machines with no display hardware
+      # and no physical input devices. It emulates a dumb framebuffer  using
+      # virtual memory.
+
+  test-macos:
+    needs: lint
+    runs-on: macos-latest
+    steps:
+      - run: uname -a
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:app
+      - run: export {no_proxy,NO_PROXY}="127.0.0.1,localhost" # ChromeDriver timesout if NO_PROXY env variable is not set.
+      - run: yarn test:spec
+  # !FIXME: Spectron tests fail on Windows, probably due to a configuration issue.
+  # test-windows:
+  #   needs: lint
+  #   runs-on: windows-latest
+  #   steps:
+  #     - run: systeminfo
+  #     - run: git config --global core.autocrlf false
+  #     - run: git config --global core.eol lf
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         version: 12
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+  #     - run: yarn install --frozen-lockfile --ignore-scripts
+  #     - run: yarn build:app
+  #     - run: SET no_proxy=localhost,127.0.0.1
+  #     - run: SET NO_PROXY=localhost,127.0.0.1
+  #     - run: yarn test:spec

@@ -2,3 +2,5 @@
 dist
 excalidraw.asar
 node_modules
+logs
+*.log
