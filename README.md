@@ -14,13 +14,13 @@ yarn
 
 ### Commands
 
-| Command               | Description                                |
-| --------------------- | ------------------------------------------ |
-| `yarn start`          | Start development application              |
-| `yarn fix`            | Reformat all files with Prettier           |
-| `yarn test`           | Run linting and tests                      |
-| `yarn download`       | Fetch latest excalidraw bundle             |
-| `yarn build`          | Build artifacts for windows, mac and linux |
+| Command         | Description                                |
+| --------------- | ------------------------------------------ |
+| `yarn start`    | Start development application              |
+| `yarn fix`      | Reformat all files with Prettier           |
+| `yarn test`     | Run linting and tests                      |
+| `yarn download` | Fetch latest excalidraw bundle             |
+| `yarn build`    | Build artifacts for windows, mac and linux |
 
 ## Contributing
 
