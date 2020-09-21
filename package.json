@@ -64,6 +64,6 @@
   "version": "0.0.1",
   "dependencies": {
     "electron-store": "^5.2.0",
-    "html-webpack-plugin": "^4.3.0"
+    "html-webpack-plugin": "^4.5.0"
   }
 }
