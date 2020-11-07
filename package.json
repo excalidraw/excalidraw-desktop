@@ -24,7 +24,7 @@
     "spectron": "10.0.1",
     "ts-loader": "8.0.3",
     "typescript": "3.9.7",
-    "webpack": "4.44.1",
+    "webpack": "4.44.2",
     "webpack-cli": "3.3.12"
   },
   "husky": {
