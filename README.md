@@ -1,8 +1,8 @@
-# Excalidraw Desktop
+# Excalidraw Desktop (archived)
 
-> ⚠️ This project is no longer officially supported and has been archived for historical reasons. We support PWA on https://excalidraw.com and you can easily install it via Chrome.
+> ⚠️ This project is no longer officially supported and has been archived for historical reasons. We support PWA on https://excalidraw.com and you can easily install it via Chrome. ⚠️
 
-> An Electron wrapper for [excalidraw.com](https://excalidraw.com).
+> Used to be an Electron wrapper for [excalidraw.com](https://excalidraw.com).
 
 [![Excalidraw Desktop](https://pbs.twimg.com/media/EPafpoLWoAAcFhc?format=jpg&name=large)](https://excalidraw.com/?id=5698913638023168)
 
