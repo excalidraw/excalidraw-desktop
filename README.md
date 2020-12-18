@@ -1,8 +1,8 @@
+
+
+# Excalidraw Desktop (deprecated)
+
 > Read more on why we deprecated this repo: [Deprecating Excalidraw Electron in favor of the Web version](https://blog.excalidraw.com/deprecating-excalidraw-electron/)
-
-# Excalidraw Desktop
-
-> An Electron wrapper for [excalidraw.com](https://excalidraw.com).
 
 [![Excalidraw Desktop](https://pbs.twimg.com/media/EPafpoLWoAAcFhc?format=jpg&name=large)](https://excalidraw.com/?id=5698913638023168)
 
