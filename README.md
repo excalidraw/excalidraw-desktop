@@ -1,3 +1,5 @@
+> Read more on why we deprecated this repo: [Deprecating Excalidraw Electron in favor of the Web version](https://blog.excalidraw.com/deprecating-excalidraw-electron/)
+
 # Excalidraw Desktop
 
 > An Electron wrapper for [excalidraw.com](https://excalidraw.com).
